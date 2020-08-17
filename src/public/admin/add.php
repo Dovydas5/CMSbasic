@@ -8,7 +8,7 @@ if(!empty($_POST)){
 
     $insert = $db->prepare("INSERT INTO pages (label, title, slug, body, created) VALUES (:label, :title, :slug, :body,CURRENT_TIMESTAMP)");
     $insert->execute(['label' => $label, 'title' => $title, 'slug' => $slug, 'body' => $body]);
-    header('Location:' . BASE_URL . '/admin/list.php');
+    header('Location:' . BASE_URL . '/admin/index.php');
 }
 
 require VIEW_ROOT . '/admin/add.php';

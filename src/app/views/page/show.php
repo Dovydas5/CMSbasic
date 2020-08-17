@@ -2,8 +2,8 @@
     <?php if (!$page):?>
         <p>Project not created</p>
     <?php else: ?>
-        <h2><?php echo escape($page['title']);?></h2>
-        <?php echo escape($page['body']);?>
+        <h2><?php echo $page['title'];?></h2>
+        <?php echo $page['body'];?>
 
         <p class="faded">Created on <?php echo $page['created']->format('d M Y H:m')?>
             <?php  if ($page['updated']):?>

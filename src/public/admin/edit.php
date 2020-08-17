@@ -11,12 +11,12 @@ if(!empty($_POST)){
     $update = $db->prepare('UPDATE pages SET label = :label, title = :title, slug = :slug, body = :body, body = :body, updated = CURRENT_TIMESTAMP WHERE id = :id');
 
     $update->execute(['id' => $id, 'label'=>$label, 'title'=>$title, 'slug'=>$slug, 'body'=>$body]);
-    header("Location:" . BASE_URL . '/admin/list.php');
+    header("Location:" . BASE_URL . '/admin/index.php');
 
 }
 
 if(!isset($_GET['id'])){
-    header("Location:" . BASE_URL . '/admin/list.php');
+    header("Location:" . BASE_URL . '/admin/index.php');
     die();
 }
 

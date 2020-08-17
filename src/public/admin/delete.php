@@ -6,4 +6,4 @@ if (isset($_GET['id'])){
 
     $delete->execute(['id' => $_GET['id']]);
 }
-header('Location:'. BASE_URL . '/admin/list.php');
+header('Location:'. BASE_URL . '/admin/index.php');

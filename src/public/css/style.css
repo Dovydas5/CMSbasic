@@ -16,7 +16,7 @@ h1, h2, h3, h4, h5, h6{
 input, textarea{
     font-size:inherit;
 }
-input[type=text],textarea{
+input[type=text],input[type=password],textarea{
     width:100%;
     padding:10px;
 }
