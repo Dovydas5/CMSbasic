@@ -6,7 +6,7 @@ if(!empty($_POST)){
     $slug = $_POST['slug'];
     $body = $_POST['body'];
 
-    $insert = $db->prepare("INSERT INTO pages (label, title, slug, body, created) VALUES (:label, :title, :slug, :body,CURRENT_TIMESTAMP)");
+    $insert = $db->prepare("INSERT INTO pages (label, title, slug, body) VALUES (:label, :title, :slug, :body)");
     $insert->execute(['label' => $label, 'title' => $title, 'slug' => $slug, 'body' => $body]);
     header('Location:' . BASE_URL . '/admin/index.php');
 }

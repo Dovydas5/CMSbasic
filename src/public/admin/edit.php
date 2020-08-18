@@ -8,7 +8,7 @@ if(!empty($_POST)){
     $slug = $_POST['slug'];
     $body = $_POST['body'];
 
-    $update = $db->prepare('UPDATE pages SET label = :label, title = :title, slug = :slug, body = :body, body = :body, updated = CURRENT_TIMESTAMP WHERE id = :id');
+    $update = $db->prepare('UPDATE pages SET label = :label, title = :title, slug = :slug, body = :body, body = :body WHERE id = :id');
 
     $update->execute(['id' => $id, 'label'=>$label, 'title'=>$title, 'slug'=>$slug, 'body'=>$body]);
     header("Location:" . BASE_URL . '/admin/index.php');
