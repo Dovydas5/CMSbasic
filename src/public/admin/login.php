@@ -1,5 +1,6 @@
 <?php
 require '../../app/start.php';
+require '../../app/function.php';
 
 
 //$stmt = $db->prepare('INSERT INTO users (username, password) VALUES (:username, :password)');
@@ -7,30 +8,13 @@ require '../../app/start.php';
 //    "username" => "admin",
 //    "password" => $hashedPwd));
 if (isset($_POST['submit-btn'])) {
-
-
     $username = $_POST['uid'];
-    $password = 'admin';
-    $hashedPwd = password_hash($password, PASSWORD_BCRYPT, array('cost' => 10));
-
-    $SQLQuery = "SELECT * FROM users WHERE username = :username";
-    $stmt = $db->prepare($SQLQuery);
-    $stmt->execute(array(':username' => $username));
-
-    while ($row = $stmt->fetch()) {
-        $id = $row['id'];
-        $hashedPwd = $row['password'];
-        $username = $row['username'];
-
-
-        if (password_verify($password, $hashedPwd)) {
-            $_SESSION['id'] = $id;
-            $_SESSION['username'] = $username;
-            header('Location: index.php');
-        } else {
-            echo "<h1>Wrong username or password</h1>";
-        }
-
+    $password = $_POST['pwd'];
+    $succeeded = login($username,$password,$db);
+    if(!$succeeded){
+        echo "Login failed";
+    }else{
+        header('Location:' . BASE_URL . '/admin/index.php');
     }
 }
 require VIEW_ROOT . '/admin/login.php';
