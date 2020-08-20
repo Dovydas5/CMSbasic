@@ -27,11 +27,3 @@ function ifLogged(){
     }else
         return false;
 }
-function login_required(){
-    if(ifLogged()){
-        return true;
-    }else {
-        header('Location:' . BASE_URL . '/admin/index.php');
-        exit();
-    }
-}

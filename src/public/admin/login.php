@@ -2,17 +2,12 @@
 require '../../app/start.php';
 require '../../app/function.php';
 
-
-//$stmt = $db->prepare('INSERT INTO users (username, password) VALUES (:username, :password)');
-//$stmt->execute(array(
-//    "username" => "admin",
-//    "password" => $hashedPwd));
 if (isset($_POST['submit-btn'])) {
     $username = $_POST['uid'];
     $password = $_POST['pwd'];
     $succeeded = login($username,$password,$db);
     if(!$succeeded){
-        echo "Login failed";
+        echo "<h1 class='wrapper'>Login failed</h1>";
     }else{
         header('Location:' . BASE_URL . '/admin/index.php');
     }
